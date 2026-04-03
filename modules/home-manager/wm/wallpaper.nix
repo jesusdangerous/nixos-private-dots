@@ -2,10 +2,9 @@
 {
   home.packages = with pkgs; [ swaybg ];
 
-
   # Копируем обои в .config/wallpapers
   home.file.".config/wallpapers/nix-glow-gruvbox.jpg".source = ../../nixos/nix-glow-gruvbox.jpg;
-}
+
   # Запускаем swaybg через systemd при старте графической сессии
   systemd.user.services.swaybg = {
     Unit = {
@@ -24,3 +23,4 @@
       WantedBy = [ "graphical-session.target" ];
     };
   };
+}
