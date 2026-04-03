@@ -21,7 +21,7 @@
     stylua
     black
     eslint
-    prettier
+    nodePackages.prettier
     nixpkgs-fmt
     
     # Tools
