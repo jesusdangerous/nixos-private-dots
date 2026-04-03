@@ -2,6 +2,27 @@
 {
   home.packages = with pkgs; [ vscode ];
 
+  # Override desktop launcher so app menus (fuzzel) run VS Code with Wayland flags.
+  xdg.desktopEntries.code = {
+    name = "Visual Studio Code";
+    genericName = "Text Editor";
+    comment = "Code Editing. Redefined.";
+    exec = "${pkgs.vscode}/bin/code --ozone-platform=wayland --enable-features=UseOzonePlatform %F";
+    icon = "vscode";
+    terminal = false;
+    categories = [
+      "Utility"
+      "TextEditor"
+      "Development"
+      "IDE"
+    ];
+    mimeType = [
+      "text/plain"
+      "inode/directory"
+    ];
+    startupNotify = true;
+  };
+
   programs.fuzzel = {
     enable = true;
     settings = lib.mkForce {
