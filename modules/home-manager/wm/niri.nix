@@ -2,6 +2,9 @@
 let
   rofiLauncher = "${config.home.homeDirectory}/.config/rofi/launcher.rasi";
   rofiPower = "${config.home.homeDirectory}/.config/rofi/power.rasi";
+  wallpaperScript = pkgs.writeShellScript "niri-wallpaper" ''
+    ${pkgs.swaybg}/bin/swaybg -i ${config.home.homeDirectory}/.config/wallpapers/nix-glow-gruvbox.jpg &
+  '';
 in {
   home.packages = with pkgs; [
     swaylock
@@ -49,6 +52,7 @@ in {
     }
 
     spawn-at-startup "nm-applet"
+  spawn-at-startup "${wallpaperScript}"
 
     binds {
       Mod+Shift+Slash { show-hotkey-overlay; }
