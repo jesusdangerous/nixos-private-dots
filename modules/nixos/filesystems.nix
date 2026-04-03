@@ -8,7 +8,7 @@
       fsType = "ext4";
       options = [ "defaults" "noatime" ]; #"uid=1000" "gid=1000" "dmask=007" "fmask=117" ];
     };
-    "/mnt/shit" = {
+    "/mnt/storage" = {
       device = "/dev/disk/by-uuid/234dc4ed-ade3-447f-af5a-4d254835cc66";
       fsType = "ext4";
       options = [ "defaults" "noatime" ]; #"uid=1000" "gid=1000" "dmask=007" "fmask=117" ];

@@ -18,22 +18,15 @@
 
     ./mangohud.nix
     # ./symlinks.nix
+    ./gui/qt.nix
 
     ##############
-    ## WM (X11) ##
+    ## WM (Wayland) ##
     ##############
 
-    # Софт для работы WM на X11
+    # Софт для работы WM на Wayland
     ./wm/rofi/rofi.nix
     ./wm/dunst.nix
-    ./wm/lockscreen.nix
-
-    # Для выключения i3wm комментируй все строки ниже
-    ./wm/i3.nix
-
-    # Для выключения bspwm комментируй все строки ниже
-    ./wm/bspwm/bspwm.nix
-    ./wm/bspwm/polybar.nix
-    ./wm/bspwm/sxhkd.nix
+    ./wm/niri.nix
   ];
 }

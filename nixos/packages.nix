@@ -48,13 +48,12 @@
     # archisteamfarm = {}; # Фарм карточек стима афк. Просто раскомментить мало, надо настроить
     ollama = {
       enable = true;
-      acceleration = "rocm";
+      acceleration = "cpu";
       # Ollama Port 11434/tcp
       host = "0.0.0.0";
       port = 11434;
       openFirewall = true;
       package = pkgs2.ollama;
-      rocmOverrideGfx = "10.3.0"; # Лок версии, чтоб на моей видюхе работало всё
       # additional environment variables
       # environmentVariables = { HSA_OVERRIDE_GFX_VERSION="10.3.0"; };
     };
@@ -153,7 +152,6 @@
 
     # Это рекомендуют ставить не на всю систему,
     # а только на nix shell внутри проекта, где нужны эти пакеты
-    # Но я хочу на всю систему
 
     # Python
     python3Full # Python last version
@@ -171,7 +169,6 @@
     gnumake
     cmake-language-server # CMake LSP
     cmake
-    # bear # Tool that generates a compilation database for clang tooling
     # boost # Collection of C++ libraries
 
     # Rust
@@ -184,6 +181,9 @@
     delve # Go debugger
     templ # A language for writing HTML user interfaces in Go. 
     golangci-lint # Fast linters Runner for Go
+
+    # Java
+    openjdk21 # Java JDK
 
     # Nix
     nixd # Nix LSP. Нет в mason
@@ -206,6 +206,14 @@
     sqlite
     dbeaver-bin
     pgadmin4
+
+    # DevOps
+    glab # GitLab CLI
+    kubectl # Kubernetes CLI
+    kubernetes-helm # Helm
+    terraform # Infrastructure as code
+    ansible # Automation
+    virtualbox # VirtualBox client
 
     # Frontend
     pkgs2.nodejs_24 # For npm
@@ -264,6 +272,7 @@
     curl
     git
     xclip # Буфер обмена
+    wl-clipboard # Буфер обмена на Wayland
     ffmpeg_7 # Обработка видео. Нужен всегда и везде как зависимость
     svt-av1 # Кодек для рендера в av1 на проце
     # imlib2Full # Image manipulation library
@@ -283,12 +292,7 @@
     # zscroll # A text scroller for use with panels and shells https://github.com/noctuid/zscroll
     tokei # Количество строк кода на разных языках в каталоге
     pass # Менеджер паролей в терминале
-    amdgpu_top # Tool to display AMD GPU usage
     btop # Монитор ресурсов в терминале
-    rocmPackages.rocm-smi # Чтоб в btop было gpu (не работает)
-    rocmPackages.rocblas # Для работы hip?
-    rocmPackages.hipblas # Для работы hip?
-    rocmPackages.clr # Для работы hip?
     pkgs2.yt-dlp # Скачивать и смотреть медиа с разных сайтов
     timer # A "sleep" with progress. Таймер на пельмени "timer 5m"
     libqalculate # Advanced calculator library
@@ -333,9 +337,8 @@
     ## Browsers ##
     ##############
 
-    librewolf
     firefox
-    chromium
+    vivaldi
     lynx # Текстовый браузер в терминале. Без картинок
 
     ##########
@@ -411,11 +414,6 @@
     ## Social ##
     ############
 
-    # (pkgs2.discord.override { # Discord с плагинами
-    #   # withOpenASAR = true; # Оптимизатор дискрода
-    #   withVencord = true; # Имба плагины                               # TODO: Настройки надо сделать декларативными
-    # })
-    pkgs2.discord
     pkgs2.telegram-desktop
 
     ###########
@@ -452,6 +450,7 @@
     ## Productivity ##
     ##################
 
+    pkgs2.anytype
     obsidian # Заметки
     pkgs2.planify # Task manager
 
@@ -510,7 +509,7 @@
     alsa-utils # Мне для команды amixer надо
     pamixer # PulseAudio cli (громкость редачу)
     easyeffects # PipeWire settings. Мне для эквалайзера нужен
-    weston # Для запуска wayland only apps на x11 (ещё есть cage, но он крашит систему при ребилде)
+    pkgs2.flclash # VPN/proxy client
 
     # Для работы некоторых тем sddm
     kdePackages.qt5compat

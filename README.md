@@ -11,11 +11,12 @@
 
 ## Другие README файлы в этих дотсах
 
-- [Бинды системы](./BINDINGS.md)
-- [Список базового софта в системе и доп информация](./NOTES.md)
-- [Цвета и иконки тем, храню для себя](./THEMES.md)
-- [Список известных проблем при настройке системы](./PROBLEMS.md)
-- [Копия man page для bspwm с доп инфой](./modules/home-manager/wm/bspwm/bspwm.md)
+- [Бинды системы](./docs/BINDINGS.md)
+- [Список базового софта в системе и доп информация](./docs/NOTES.md)
+- [Цвета и иконки тем, храню для себя](./docs/THEMES.md)
+- [Список известных проблем при настройке системы](./docs/PROBLEMS.md)
+- [Безопасная настройка и обновление](./docs/SETUP_SAFE.md)
+- [Wayland/niri конфиг](./modules/home-manager/wm/niri.nix)
 - [Описание плагинов для mpv](./modules/home-manager/mpv/README.md)
 - [NeoVim config](./nvim/README.md)
 
@@ -29,9 +30,9 @@
 
 ## Процесс установки
 
-Сначала качаем NixOS GUI вариант и устанавливаем систему через визуальный установщик. При установке выбираем минимальный вариант, без DE.
+Сначала ставим минимальный NixOS без DE. Дальше один раз включаем flakes и git в базовой системе, чтобы можно было забилдить этот конфиг без лишней возни.
 
-Кто-то говорит, что потом достаточно просто забилдить одной командой чужой конфиг, но это не так. Будет ошибка, что нет гита. Если использовать nix-shell для гита, то скажет, что нет экспериментальной функции. Либо писать огромную команду, либо, как советую сделать я, изменить стоковый конфиг никса. Для этого пишем следующее:
+Для этого пишем следующее:
 
 ```sh
 sudo nano /etc/nixos/configuration.nix
@@ -65,20 +66,17 @@ sudo nano /etc/nixos/configuration.nix
 sudo nixos-rebuild switch
 ```
 
-Дальше есть два способа. Перед использованием любого из них я рекомендую сделать форк и внести следующие изменения в конфиг перед установкой (либо можно сделать гит клон и через nano/vim внести изменения для первых трёх пунктов, остальное менять на готовой системе):
+Дальше есть два способа. Перед использованием любого из них я рекомендую сделать форк и внести только эти изменения в конфиг перед установкой:
 
 - Переменную `username` в `nixos/configuration.nix`.
 - `username` и `homeDirectory` в `nixos/home.nix`.
 - `userName` и `userEmail` в `modules/home-manager/terminal/git.nix`.
 
-Если видеокарта не от AMD, то надо сделать это. Если видеокарта от AMD, то стоит убедиться, что сделано наоборот, то есть включены нужные параметры.
-- Удалить `rocmSupport = true;` в файле `flake.nix`
-- Удалить `videoDrivers = [ "amdgpu" ];` и `deviceSection = ''Option "TearFree" "True"'';` в конце файла `modules/nixos/xserver.nix`. Возможно надо включить `videoDrivers = [ "nvidia" ];`, если видеокарта от Nvidia. Но лучше почитать https://nixos.wiki/wiki/Nvidia. Для графики Intel читать это https://nixos.wiki/wiki/Intel_Graphics. Мб для Nvidia и Intel не обязательно добавлять настройки и удалить amd конфиги будет достаточно для запуска.
-- Удалить всю категорию настроек `amdgpu = {}`, удалить `boot.initrd.kernelModules`, и удалить всю категорию настроек `systemd.tmpfiles.rules = let` в файле `modules/nixos/hardware.nix`
+Этот конфиг уже собран без AMD-специфики, поэтому руками вычищать `rocmSupport`, `amdgpu` или `videoDrivers` больше не нужно.
 
 А это можно донастроить уже в готовой системе
-- Путь до `home` в `shit/qt5ct/qt5ct.conf` и `shit/qt6ct/qt6ct.conf`.
-- Параметры мониторов закомментированы в файле `modules/home-manager/wm/bspwm/bspwm.nix`. Можно указать по желанию. Команда xrandr покажет доступные значения и имена мониторов.
+- Путь до `home` в `assets/qt5ct/qt5ct.conf` и `assets/qt6ct/qt6ct.conf`.
+- Параметры мониторов можно добавить прямо в `modules/home-manager/wm/niri.nix`, если нужна фиксированная раскладка экранов.
 - Если надо задать симлинки, то для этого есть файл `modules/home-manager/symlinks.nix`. Там сейчас мои симлинки, их лучше удалить. Чтоб файл заработал, надо раскомментировать `./symlinks.nix` в файле `modules/home-manager/bundle.nix`.
 - Если надо монтировать другие диски, то для этого есть файл `modules/nixos/filesystems.nix`. Там сейчас мой второй ссд. Чтоб файл заработал, надо раскомментировать `./filesystems.nix` в файле `modules/nixos/bundle.nix`.
 - Если нужна гибернация, то её можно настроить в `modules/nixos/hibernate.nix`. Там надо указать uuid и офсет для swap файла. Чтоб файл заработал, надо раскомментировать `./hibernate.nix` в файле `modules/nixos/bundle.nix`.
@@ -117,7 +115,7 @@ sudo nixos-rebuild boot --impure --flake ~/nixos-private-dots
   } ];
 ```
 - Настроить гибренацию в `modules/nixos/hibernate.nix`
-- Активировать скрипт в `shit` каталоге, чтоб скопировать нужные конфиги в нужные каталоги. Симлинки не работают
+- Проверить, что ассоциации файлов и тема Qt устраивают тебя: они теперь задаются декларативно через `modules/home-manager/gui/qt.nix`.
 - Настроить приложения `Qt5 Settings`, `Qt6 Settings` и `Kvantum`. Там надо выбрать свою системную тему. Вроде всё интуитивно понятно будет. Можно попробовать обновить систему, в надежде, что системная тема `stylix` начнёт работать с приложениями `qt`. Для этого надо будет закомментить настройки `qt` в конфиге `stylix`.
 - Руками настроить `thunar`, `discord`, `telegram`, `steam`, `strawberry` и бинды для `ksnip`
 - Добавить gpg ключи
@@ -148,18 +146,4 @@ gpg --edit-key ID-ключа
 +    };
 +  };
 ```
-В файле `modules/home-manager/wm/bspwm/bspwm.nix` изменить эти строки:
-```diff
-   extraConfigEarly = ''
--     xrandr --output DisplayPort-2 --mode 1920x1080 --rate 165
--     xrandr --output HDMI-A-0 --mode 1920x1080 --rate 100 --right-of DisplayPort-2
-+     xrandr --output Virtual-1 --mode 1920x1080 --rate 60
-   '';
-```
-В файле `modules/nixos/xserver.nix` закомментировать эти строки, даже если amd gpu на хосте:
-```diff
--    videoDrivers = [ "amdgpu" ]; # https://nixos.wiki/wiki/AMD_GPU
--    deviceSection = ''Option "TearFree" "True"'';
-+    # videoDrivers = [ "amdgpu" ]; # https://nixos.wiki/wiki/AMD_GPU
-+    # deviceSection = ''Option "TearFree" "True"'';
-```
+В файле `modules/home-manager/wm/niri.nix` можно добавить свои output-блоки, если виртуалка или основной компьютер всегда работают с одной и той же раскладкой мониторов.

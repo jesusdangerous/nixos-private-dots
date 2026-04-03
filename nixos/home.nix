@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }: {
+{ config, pkgs, inputs, lib, user, ... }: {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -8,8 +8,8 @@
   ];
 
   home = {
-    username = "buliway";
-    homeDirectory = "/home/buliway";
+    username = user.username;
+    homeDirectory = user.homeDirectory;
 
     # Если с каким-то софтом будут проблемы, то можно перенести из "packages.nix" сюда
     # Например, я читал, что если ставить vscode через configuration.nix, а не через пакеты юзера,
@@ -27,7 +27,7 @@
       TERM = "alacritty";
       QT_QPA_PLATFORMTHEME = "qt6ct";
       # QT_STYLE_OVERRIDE = "kvantum";
-      PATH = "$PATH:${config.home.homeDirectory}/go/bin";
+      PATH = "$PATH:${user.homeDirectory}/go/bin";
     };
 
     stateVersion = "24.05"; # Don't change it

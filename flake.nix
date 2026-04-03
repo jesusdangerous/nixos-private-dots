@@ -28,9 +28,17 @@
   outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
+    username = "buliway";
+    user = {
+      inherit username;
+      homeDirectory = "/home/${username}";
+      git = {
+        name = "Buliway";
+        email = "me@buliway.ru";
+      };
+    };
     config = {
       allowUnfree = true;
-      rocmSupport = true;
       permittedInsecurePackages = [
         "python-2.7.18.8"
         "electron-25.9.0"
@@ -52,7 +60,7 @@
   {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; };
+        specialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; inherit user; };
         inherit pkgs;
         inherit system;
         modules = [

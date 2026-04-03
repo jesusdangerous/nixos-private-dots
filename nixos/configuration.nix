@@ -1,8 +1,4 @@
-{ pkgs, pkgs2, spkgs, inputs, ... }:
-
-let
-  username = "buliway";
-in {
+{ pkgs, pkgs2, spkgs, inputs, user, ... }: {
   imports = [
     /etc/nixos/hardware-configuration.nix
     inputs.home-manager.nixosModules.default
@@ -14,7 +10,7 @@ in {
   # то их ребут при ребилде можно выключить таким конфигом:
   # systemd.services = {
   #   "accounts-daemon".restartIfChanged = false;
-  #   "home-manager-buliway".restartIfChanged = false;
+  #   "home-manager-${user.username}".restartIfChanged = false;
   # };
 
   boot = {
@@ -37,10 +33,10 @@ in {
   users = {
     defaultUserShell = pkgs.zsh;
     
-    users.${username} = {
+    users.${user.username} = {
       isNormalUser = true;
-      description = username;
-      extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" "storage" "docker" "video" ];
+      description = user.username;
+      extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" "storage" "docker" "video" "vboxusers" ];
       # packages = with pkgs; [
       #   clang-tools
       # ];
@@ -51,26 +47,12 @@ in {
     # also pass inputs to home-manager modules
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; };
-    users.${username} = import ./home.nix;
+    extraSpecialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; inherit user; };
+    users.${user.username} = import ./home.nix;
   };
 
   security.polkit = { # Всплывающее меню для ввода пароля
     enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    configPackages = with pkgs; [
-      xdg-desktop-portal
-      # kdePackages.xdg-desktop-portal-kde
-      # xdg-desktop-portal-gtk # Чтоб загружать файлы и стримить в дискорде
-    ];
-    extraPortals = with pkgs; [
-      xdg-desktop-portal
-      # kdePackages.xdg-desktop-portal-kde
-      # xdg-desktop-portal-gtk # Чтоб загружать файлы и стримить в дискорде
-    ];
   };
 
   nix.settings = {

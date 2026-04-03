@@ -1,24 +1,13 @@
-# Часть настроек меняется в xserver.nix и network.nix
+# Часть настроек меняется в wayland.nix и network.nix
 # Некоторые настройки под конкретное железо https://github.com/NixOS/nixos-hardware
 
 { pkgs, ... }: {
   hardware = { # Параметры для 24.05 и unstable могут сильно отличаться
-    amdgpu = {
-      opencl.enable = true; # Enable OpenCL support using ROCM runtime library.
-      # amdvlk = { # Гавно лаганое, лучше radv юзать (radeon vulkan)
-      #   enable = true; # Enable AMDVLK Vulkan driver.
-      #   support32Bit.enable = true; # Enable 32-bit driver support.
-      #   supportExperimental.enable = true; # Enable Experimental features support.
-      #   # settings = {}; # Runtime settings for AMDVLK to be configured /etc/amd/amdVulkanSettings.cfg.
-      # };
-    };
-    
     graphics = { # hardware.opengl переименован в hardware.graphics в unstable ветке
       enable = true;
       enable32Bit = true; # install 32-bit drivers for 32-bit applications (such as Wine).
       extraPackages = with pkgs; [
         libva # VAAPI (Video Acceleration API)
-        rocmPackages.clr.icd # OpenCL
       ];
     };
 
@@ -45,30 +34,4 @@
 
   };
 
-  # HIP
-  # Most software has the HIP libraries hard-coded. You can work around it on NixOS by using:
-  # systemd.tmpfiles.rules = [ # Legacy
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  # ];
-  systemd.tmpfiles.rules = let
-    rocmEnv = pkgs.symlinkJoin {
-      name = "rocm-combined";
-      paths = with pkgs.rocmPackages; [
-        rocblas
-        hipblas
-        clr
-      ];
-    }; in [
-    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  ];
-
-  boot.initrd.kernelModules = [ "amdgpu" ]; # Мб не обязательно
-
-  # Для AMD существует два драйвера Vulkan
-  # Один официальный от AMD - amdvlk
-  # Второй начат сообществом и сейчас поддерживается Valve - radv
-  # В разных ситуациях разные драйверы будут лучше работать
-  # В некоторых играх лучше работает radv, в некоторых amdvlk
-  # Штука ниже не обязательна для работы radv, но я сохранил
-  # environment.variables.AMD_VULKAN_ICD = "RADV";
 }

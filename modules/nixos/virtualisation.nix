@@ -3,6 +3,7 @@
   virtualisation = {
     # podman.enable = true;
     waydroid.enable = true;
+    virtualbox.host.enable = true;
 
     docker = {
       enable = true;

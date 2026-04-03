@@ -4,6 +4,8 @@
   # https://dunst-project.org/documentation/
   services.dunst = {
     enable = true;
+    enableX11 = false;
+    enableWayland = true;
 
     iconTheme = {
       name = "Gruvbox-Plus-Dark"; # Имя каталога в /usr/share/icons/

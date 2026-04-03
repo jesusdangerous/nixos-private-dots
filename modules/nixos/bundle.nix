@@ -9,6 +9,6 @@
     ./stylix.nix
     ./virtualisation.nix
     # ./vr.nix
-    ./xserver.nix
+    ./wayland.nix
   ];
 }
