@@ -264,7 +264,7 @@ return {
 
             -- C/C++
             lspconfig.clangd.setup {
-                filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' }, -- Удалил "proto"
+                filetypes = { 'c', 'cpp', 'objc', 'objcpp' }, -- Удалил "proto"
             }
             lspconfig.cmake.setup {}
 

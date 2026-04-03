@@ -169,6 +169,7 @@
         "type": "github"
       },
       "original": {
+        "ref": "release-24.11",
         "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
@@ -190,6 +191,7 @@
         "type": "github"
       },
       "original": {
+        "ref": "release-24.11",
         "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"

@@ -43,17 +43,6 @@
     # greenclip.enable = true; # https://github.com/erebe/greenclip (использую clipmenu вместо этого)
     # fstrim.enable = true; # Чистит ssd для норм производительности. Пока не пользуюсь
     # archisteamfarm = {}; # Фарм карточек стима афк. Просто раскомментить мало, надо настроить
-    ollama = {
-      enable = true;
-      acceleration = "cuda";
-      # Ollama Port 11434/tcp
-      host = "0.0.0.0";
-      port = 11434;
-      openFirewall = true;
-      package = pkgs.ollama;
-      # additional environment variables
-      # environmentVariables = { HSA_OVERRIDE_GFX_VERSION="10.3.0"; };
-    };
   };
 
   programs = {
