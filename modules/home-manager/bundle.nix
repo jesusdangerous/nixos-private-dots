@@ -28,5 +28,7 @@
     ./wm/rofi/rofi.nix
     ./wm/dunst.nix
     ./wm/niri.nix
+    ./wm/waybar/waybar.nix
+    ./wm/wallpaper.nix
   ];
 }

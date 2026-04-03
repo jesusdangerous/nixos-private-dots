@@ -49,6 +49,7 @@ in {
     }
 
     spawn-at-startup "nm-applet"
+    spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-i" "${config.home.homeDirectory}/.config/wallpapers/nix-glow-gruvbox.jpg"
 
     binds {
       Mod+Shift+Slash { show-hotkey-overlay; }
