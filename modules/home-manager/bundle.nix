@@ -1,4 +1,13 @@
-{
+let
+  importNixFiles = dir:
+    let
+      entries = builtins.readDir dir;
+      nixFiles = builtins.filter
+        (name: entries.${name} == "regular" && builtins.match ".*\\.nix" name != null)
+        (builtins.attrNames entries);
+    in
+      builtins.map (name: dir + "/${name}") nixFiles;
+in {
   imports = [
     ./ranger/ranger.nix
 
@@ -8,13 +17,7 @@
     ./mpv/mpv.nix
     ./obs/obs.nix
 
-    ./terminal/alacritty.nix
-    ./terminal/git.nix
-    ./terminal/kitty.nix
-    ./terminal/lynx.nix
-    ./terminal/starship.nix
-    ./terminal/zellij.nix
-    ./terminal/zsh.nix
+  ] ++ importNixFiles ./terminal ++ [
 
     ./mangohud.nix
     # ./symlinks.nix
