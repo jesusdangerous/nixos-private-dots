@@ -28,13 +28,13 @@
   outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
-    username = "buliway";
+    username = "username";
     user = {
       inherit username;
       homeDirectory = "/home/${username}";
       git = {
-        name = "Buliway";
-        email = "me@buliway.ru";
+        name = "username";
+        email = "username@example.com";
       };
     };
     config = {

@@ -1,109 +1,62 @@
-Тут будут описаны все бинды системы. Актуальный WM сейчас niri, а нижняя часть файла с bspwm оставлена как архив, так что лучше читай конфиги.
+## Niri Keybindings
 
-Возможно бинды для скринов придётся настроить руками в ksnip
+Актуальные хоткеи для текущей конфигурации niri.
 
-# Минимально необходимые бинды
+## Основные
 
-Тут будет мелкий список биндов, с которым можно начать. Бинды из секции "все бинды" могут повторяться
+- Super + Shift + Return: терминал
+- Super + Return: floating терминал
+- Super + Shift + C: закрыть окно
+- Super + F: toggle floating
+- Super + Shift + F: fullscreen
+- Super + Alt + L: lock screen
+- Super + Shift + E: выход из сессии
+- Ctrl + Alt + Delete: выход из сессии
 
-Клавиша `Super` это клавиша `Win`
+## Навигация
 
-- `Super + D` - Запускатор приложений (alias: `Super + A`)
-- `Super + Shift + C` - Закрыть активное окно
-- `Super + 0-9` - Переключить воркспейс (если добавить shift, то кидает активное окно на указанный воркспейс)
-- `Super + Esc` - Быстро перейти на соседний воркспейс
-- `Super + Shift + Return` - Открыть терминал
-- `Super + Return` - Floating терминал
-- `Super + ПКМ` - Менять размер окна, на котором зажал ПКМ и водишь мышкой
-- `Super + ЛКМ` - Двигать окно, на котором зажал ЛКМ
-- `Super + F` - Делает окно flotaing и обратно tiling при повторном нажатии (если забагалось и делает фулскрин, то добавь shift, чтоб переключить в tiling)
-- `Super + Стрелки` - Меняет фокус приложения в указанном направлении
-- `Дальняя боковая кнопка мыши` - Скрол. Зажимаешь эту кнопку и водишь мышкой по столу в ту сторону, куда хочешь скролить
-- `CapsLock` - Сменить язык на клавиатуре (если нужен просто капс, то жми с shift)
+- Super + Arrows: фокус окон/колонок
+- Super + Shift + Arrows: перемещение окна/колонки
+- Super + 1..9: фокус workspace
+- Super + Shift + 1..9: отправить колонку в workspace
+- Super + PageUp/PageDown: следующий/предыдущий workspace
+- Super + Escape: быстрый переход по workspace
 
+## Лаунчеры
 
-# Все бинды
+- Super + D: rofi drun
+- Super + A: rofi drun (alias)
+- Super + C: rofi calc
+- Super + P: rofi-pass
+- Super + V: clipmenu
+- Super + Backspace: power menu
+- Super + Tab: rofi window switcher
 
-Клавиша `Super` это клавиша `Win`
+## Приложения
 
-| Bspwm                             | Описание                                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------------------- |
-| `Super + L`                       | Lock screen                                                                                 |
-| `Super + Shift + C`               | Закрыть активное окно                                                                         |
-| `Super + F`                       | Floating toggle                                                                             |
-| `Super + Shift + F`               | Tiled toggle                                                                                |
-| `Super + Enter`                   | Fullscreen toggle                                                                           |
-| `Super + Esc`                     | Быстрый переход на соседний воркспейс                                                        |
-| `Super + ЛКМ`                     | Переместить окно                                                                            |
-| `Super + ПКМ`                     | Ресайзить окно                                                                              |
-| `Super + Arrows`                  | Менять фокус приложения в указанном направлении                                             |
-| `Super + 0-9`                     | Переключить воркспейс на 1-10. Если они общие на все моники, то добавить F1-F12 для 11-22   |
-| `Super + Shift + 0-9`             | Перекинуть активное окно на воркспейс. Желательно silent, чтоб меня не перекидывало к проге |
-| `Super + Ctrl + Down`             | Переключает на первый пустой воркспейс                                                      |
-| `Super + Shift + Left/Right`      | Перемещает активную колонку/окно влево или вправо                                            |
-| `Super + Ctrl + Alt + Down`       | Свапает активное окно с самым большим на экране                                             |
-| `Super + Ctrl + Alt + Left/Right` | Перекидывает активное окно на предыдущий/следующий воркспейс и следует за ним               |
-| `Super + Alt + Arrows`            | Move floating window                                                                        |
-| `Super + Shift + Arrows`          | Resize window на 30 пикселей в указанном направлении наружу                                 |
-| `Super + Shift + Alt + Arrows`    | Resize window на 30 пикселей в указанном направлении внутрь                                 |
-| `Super + Shift + Ctrl + Arrows`   | Перемещает активное окно в указанном направлении                                            |
-| `Super + S`                       | Split toggle. Меняет позиционирование с горизонтального на вертикальный и обратно.          |
-| `Super + Ctrl + Shift + R`        | Make sxhkd reload its config files                                                          |
-| `Super + Alt + Ctrn + Shift + R`  | Restart bspwm                                                                               |
-| `Super + Alt + Ctrn + Shift + Q`  | Quit bspwm                                                                                  |
+- Super + B: Firefox
+- Super + Shift + B: Vivaldi
+- Super + Ctrl + N: Obsidian
+- Super + E: Thunar
+- Super + I: VS Code
+- Super + M: btop (в терминале)
+- Super + G: Planify
 
-| Rofi                | Описание                                                                                       | Работает? |
-| ------------------- | ---------------------------------------------------------------------------------------------- | --------- |
-| `Super + D`         | Applications. Запускатор софта                                                                 |     Да    |
-| `Super + A`         | Applications. Alias запускатора                                                                |     Да    |
-| `Super + C`         | Calculator имбовый. Можно даже написать `5600 USD to BTC` или `500 + 25%`.                     |     Да    |
-| `Super + P`         | Passwords. Пароли из утилиты pass                                                              |     Да    |
-| `Super + V`         | История буфера обмена. Как ctrl+v, но через win.                                               |     Да    |
-| `Super + Backspace` | PowerMenu. Выключение пк                                                                       |     Да    |
-| `Super + Tab`       | Как alt+tab, переключение окон. На нужный воркспейс само перекинет                             |     Да    |
-| `Super + Alt + T`   | Timer. Думаю сделать через утилиту timer                                                       |нет|
-| `Super + N`         | Notification history pop (dunstctl history-pop)                                                |     Да    |
-| `Super + Shift + N` | Закрыть все уведомления (dunstctl close-all)                                                   |     Да    |
+## Уведомления
 
-| Applications               | Описание                                  | Работает? |
-| -------------------------- | ----------------------------------------- | --------- |
-| `Super + B`                | Browser LibreWolf. Основа                 |     Да    |
-| `Super + Shift + B`        | Browser Firefox. Паблик активность        |     Да    |
-| `Super + Shift + Ctrl + B` | Browser Chromium. Пусть будет             |     Да    |
-| `Super + Ctrl + N`         | Note taking app (obsidian)                |     Да    |
-| `Super + E`                | Explorer. Thunar file manager             |     Да    |
-| `Super + I`                | IDE, text editor                          |     Да    |
-| `Super + M`                | Monitor of resources (btop)               |     Да    |
-| `Super + G`                | Goals. Todo manager. Task tracker         |     Да    |
-| `Super + Shift + X`        | Color picker. Получить hex в буфер обмена |     Да    |
-| `Super + Ctrl + X`         | Color picker. Получить rgb в буфер обмена |     Да    |
+- Super + N: dunstctl history-pop
+- Super + Shift + N: dunstctl close-all
 
-| Terminal                   | Описание                                                                     | Работает? |
-| -------------------------- | ---------------------------------------------------------------------------- | --------- |
-| `Super + Shift + Return`   | Terminal основной (alacritty)                                                |     Да    |
-| `Super + Return`           | Floating Terminal основной (alacritty)                                       |     Да    |
-| `Super + Ctrl + T`         | Terminal запасной (kitty)                                                    |     Да    |
-| `Super + Shift + Ctrl + T` | Floating Terminal запасной (kitty)                                           |     Да    |
+## Мультимедиа
 
-| Колдунские кнопки       | Описание               | Работает? |
-| ----------------------- | ---------------------- | --------- |
-| `XF86AudioMute`         | Toggle audio mute      |хз|
-| `XF86AudioMicMute`      | Toggle microphone mute |хз|
-| `XF86AudioLowerVolume`  | Decrease volume        |     Да    |
-| `XF86AudioRaiseVolume`  | Increase volume        |     Да    |
-| `XF86AudioPlay`         | Play/pause             |хз|
-| `XF86AudioPause`        | Play/pause             |хз|
-| `XF86AudioNext`         | Next track             |хз|
-| `XF86AudioPrev`         | Previous track         |хз|
-| `XF86MonBrightnessUp`   | Increase brightness    |хз|
-| `XF86MonBrightnessDown` | Decrease brightness    |хз|
+- XF86AudioMute: mute
+- XF86AudioMicMute: mute mic
+- XF86AudioLowerVolume / XF86AudioRaiseVolume: громкость
+- XF86AudioPlay/Pause/Next/Prev: playerctl
+- XF86MonBrightnessUp/Down: brightnessctl
 
-| Not sxhkd       | Описание               | Работает? |
-| --------------- | ---------------------- | --------- |
-| `Print`         | Выделить область       |     Да    |
-| `Print + Alt`   | Все мониторы целиком   |     Да    |
-| `Print + Ctrl`  | Активный монитор       |     Да    |
-| `Print + Shift` | Активное окно          |     Да    |
-| `CapsLock`      | Switch keyboard layout |     Да    |
+## Скриншоты
 
-Так же есть бинд на зажим дальней боковой кнопки мыши. Если эту кнопку нажимать, то она работает как обычно. Если её зажать и начать двигать мышку, то вместо движения курсора будет плавный скрол. Обычно такое делают на трекболах без колеса мыши, но я люблю этот метод скрола на любом девайсе. Можно скролить с нужной скоростью и точностью куда надо без долгого кручения колеса.
+- Print: область
+- Alt + Print: экран
+- Ctrl + Print: окно
