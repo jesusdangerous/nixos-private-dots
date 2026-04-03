@@ -59,7 +59,7 @@
   programs = {
     nix-ld = { # Имитация файловой системы обычного линукса и пакеты для этого дела
       enable = true;
-      libraries = with pkgs2; [
+      libraries = with pkgs; [
         stdenv.cc.cc
         # Для запуска Throne бинаря с гитхаб (форк nekoray)
         kdePackages.qtbase
@@ -420,10 +420,10 @@
     # Мб зависимости
     protonup-qt # Управлять версиями proton-ge для steam
     steam-run # На всякий случай
-    pkgs2.mangohud # Фпс и нагрузку на пк показывает в играх
-    pkgs2.wineWowPackages.stableFull # support both 32- and 64-bit applications
+    pkgs.mangohud # Фпс и нагрузку на пк показывает в играх
+    pkgs.wineWowPackages.stableFull # support both 32- and 64-bit applications
     # wineWowPackages.staging # Можно назвать бета версией вайна
-    pkgs2.winetricks # winetricks (all versions)
+    pkgs.winetricks # winetricks (all versions)
     # wineWowPackages.waylandFull # native wayland support (unstable)
     # protontricks # Running Winetricks commands for Proton-enabled games
 
