@@ -1,4 +1,4 @@
-{ pkgs, pkgs2, spkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: {
 
   # https://nixos.wiki/wiki/Fonts
   fonts.packages = with pkgs; [
@@ -50,7 +50,7 @@
       host = "0.0.0.0";
       port = 11434;
       openFirewall = true;
-      package = pkgs2.ollama;
+      package = pkgs.ollama;
       # additional environment variables
       # environmentVariables = { HSA_OVERRIDE_GFX_VERSION="10.3.0"; };
     };
@@ -237,7 +237,7 @@
     go-migrate # Database migrations. CLI and Golang library
     postman # API Development Environment
     insomnia # API client. Мне нравится больше, чем postman
-    pkgs2.nushell # Modern shell
+    pkgs.nushell # Modern shell
 
     # For nvim
     tree-sitter # code parser
@@ -285,7 +285,7 @@
     tokei # Количество строк кода на разных языках в каталоге
     pass # Менеджер паролей в терминале
     btop # Монитор ресурсов в терминале
-    pkgs2.yt-dlp # Скачивать и смотреть медиа с разных сайтов
+    pkgs.yt-dlp # Скачивать и смотреть медиа с разных сайтов
     timer # A "sleep" with progress. Таймер на пельмени "timer 5m"
     libqalculate # Advanced calculator library
     fastfetch # Пишешь в теримнал и кидаешь всем со словами I use nixos btw
@@ -293,7 +293,7 @@
     fzf # Нечёткий поиск
     killall # Убить процессы. Мем, что в стоке не стоит
     libnotify # Вызов оповещений через "notify-send"
-    pkgs2.gallery-dl # Качать много картинок с кучи разных сайтов
+    pkgs.gallery-dl # Качать много картинок с кучи разных сайтов
     pwgen # Генератор паролей
     lm_sensors # Сенсоры
     httpie # interacting with APIs & HTTP servers
@@ -343,7 +343,7 @@
     hunspell # Проверка орфографии для libreoffice
     hunspellDicts.ru_RU # Словарь для проверки орфографии
     hunspellDicts.en_US # Словарь для проверки орфографии
-    spkgs.calibre # Работа с ebook. Иногда даёт thumbnail в файловом менеджере
+    pkgs.calibre # Работа с ebook. Иногда даёт thumbnail в файловом менеджере
     drawio # Desktop application for creating diagrams. Вроде даёт thumbnail в ranger
     xournalpp # Xournal++ is a handwriting Notetaking software with PDF annotation support
 
@@ -406,7 +406,7 @@
     ## Social ##
     ############
 
-    pkgs2.telegram-desktop
+    pkgs.telegram-desktop
 
     ###########
     ## Games ##
@@ -432,7 +432,6 @@
     ############
 
     krita # Рисовать 1. Часто крашится
-    pkgs2.gimp3 # Рисовать 2. Потом выберу что оставить
     # blender-hip # 3д графика и рендер видео
     gcolor3 # GUI color picker
     xcolor # CLI color picker https://github.com/Soft/xcolor
@@ -442,9 +441,9 @@
     ## Productivity ##
     ##################
 
-    pkgs2.anytype
+    pkgs.anytype
     obsidian # Заметки
-    pkgs2.planify # Task manager
+    pkgs.planify # Task manager
 
     #########
     ## IDE ##
@@ -501,7 +500,7 @@
     alsa-utils # Мне для команды amixer надо
     pamixer # PulseAudio cli (громкость редачу)
     easyeffects # PipeWire settings. Мне для эквалайзера нужен
-    pkgs2.flclash # VPN/proxy client
+    pkgs.flclash # VPN/proxy client
 
     # Для работы некоторых тем sddm
     kdePackages.qt5compat

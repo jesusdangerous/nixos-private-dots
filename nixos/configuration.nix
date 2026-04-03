@@ -1,4 +1,4 @@
-{ pkgs, pkgs2, spkgs, inputs, user, ... }: {
+{ pkgs, inputs, user, ... }: {
   imports = [
     /etc/nixos/hardware-configuration.nix
     inputs.home-manager.nixosModules.default
@@ -47,7 +47,7 @@
     # also pass inputs to home-manager modules
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; inherit user; };
+    extraSpecialArgs = { inherit inputs; inherit user; };
     users.${user.username} = import ./home.nix;
   };
 

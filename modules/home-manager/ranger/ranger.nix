@@ -1,4 +1,4 @@
-{ pkgs, spkgs, ... }: {
+{ pkgs, ... }: {
   programs.ranger = { # Файловый менеджер в терминале
     enable = true;
 
@@ -14,7 +14,7 @@
       lynx # Preview html pages
       poppler # Preview PDF
       djvulibre # Preview djvu
-      spkgs.calibre # Preview ebooks (or epub-thumbnailer)
+      pkgs.calibre # Preview ebooks (or epub-thumbnailer)
       catdoc # Preview XLS as csv conversion
       exiftool # Information about media files
       odt2txt # For OpenDocument text files

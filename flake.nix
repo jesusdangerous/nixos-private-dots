@@ -3,9 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    # Второй пакетный набор. По умолчанию тоже стабильный.
-    nixpkgs2.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -46,19 +43,11 @@
       inherit system;
       inherit config;
     };
-    pkgs2 = import inputs.nixpkgs2 {
-      inherit system;
-      inherit config;
-    };
-    spkgs = import inputs.nixpkgs-stable {
-      inherit system;
-      inherit config;
-    };
   in
   {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit spkgs; inherit pkgs2; inherit inputs; inherit user; };
+        specialArgs = { inherit pkgs; inherit inputs; inherit user; };
         inherit pkgs;
         inherit system;
         modules = [
