@@ -26,7 +26,7 @@
   outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
-    username = "username";
+    username = "sixxxsta";
     user = {
       inherit username;
       homeDirectory = "/home/${username}";
