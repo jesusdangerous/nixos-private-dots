@@ -8,20 +8,21 @@
       fsType = "ext4";
       options = [ "defaults" "noatime" ];
     };
-<<<<<<< HEAD
+
     "/mnt/storage" = {
       device = "/dev/disk/by-uuid/234dc4ed-ade3-447f-af5a-4d254835cc66";
-=======
+      fsType = "ext4";
+      options = [ "defaults" "noatime" ];
+    };
 
     "/nix" = {
       device = "/dev/disk/by-uuid/8B8C-CABC";
-      fsType = "ext4";  
+      fsType = "ext4";
       options = [ "defaults" "noatime" ];
     };
 
     "/mnt/data" = {
       device = "/dev/disk/by-uuid/a3ced3c3-320d-42e9-9cbc-d957c74f7a0";
->>>>>>> 9ff83bce4ddefec78e45b335958ca80045dc7ffe
       fsType = "ext4";
       options = [ "defaults" "noatime" ];
     };
