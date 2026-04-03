@@ -213,7 +213,7 @@
     virtualbox # VirtualBox client
 
     # Frontend
-    pkgs.nodejs # For npm
+    nodejs # For npm
     htmx-lsp # HTMX lsp
     emmet-language-server # Emmet.io LSP
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint LSP
@@ -237,7 +237,7 @@
     go-migrate # Database migrations. CLI and Golang library
     postman # API Development Environment
     insomnia # API client. Мне нравится больше, чем postman
-    pkgs.nushell # Modern shell
+    nushell # Modern shell
 
     # For nvim
     tree-sitter # code parser
@@ -285,7 +285,7 @@
     tokei # Количество строк кода на разных языках в каталоге
     pass # Менеджер паролей в терминале
     btop # Монитор ресурсов в терминале
-    pkgs.yt-dlp # Скачивать и смотреть медиа с разных сайтов
+    yt-dlp # Скачивать и смотреть медиа с разных сайтов
     timer # A "sleep" with progress. Таймер на пельмени "timer 5m"
     libqalculate # Advanced calculator library
     fastfetch # Пишешь в теримнал и кидаешь всем со словами I use nixos btw
@@ -293,7 +293,7 @@
     fzf # Нечёткий поиск
     killall # Убить процессы. Мем, что в стоке не стоит
     libnotify # Вызов оповещений через "notify-send"
-    pkgs.gallery-dl # Качать много картинок с кучи разных сайтов
+    gallery-dl # Качать много картинок с кучи разных сайтов
     pwgen # Генератор паролей
     lm_sensors # Сенсоры
     httpie # interacting with APIs & HTTP servers
@@ -343,7 +343,7 @@
     hunspell # Проверка орфографии для libreoffice
     hunspellDicts.ru_RU # Словарь для проверки орфографии
     hunspellDicts.en_US # Словарь для проверки орфографии
-    pkgs.calibre # Работа с ebook. Иногда даёт thumbnail в файловом менеджере
+    calibre # Работа с ebook. Иногда даёт thumbnail в файловом менеджере
     drawio # Desktop application for creating diagrams. Вроде даёт thumbnail в ranger
     xournalpp # Xournal++ is a handwriting Notetaking software with PDF annotation support
 
@@ -406,7 +406,7 @@
     ## Social ##
     ############
 
-    pkgs.telegram-desktop
+    telegram-desktop
 
     ###########
     ## Games ##
@@ -420,10 +420,10 @@
     # Мб зависимости
     protonup-qt # Управлять версиями proton-ge для steam
     steam-run # На всякий случай
-    pkgs.mangohud # Фпс и нагрузку на пк показывает в играх
-    pkgs.wineWowPackages.stableFull # support both 32- and 64-bit applications
+    mangohud # Фпс и нагружку на пк показывает в играх
+    wineWowPackages.stableFull # support both 32- and 64-bit applications
     # wineWowPackages.staging # Можно назвать бета версией вайна
-    pkgs.winetricks # winetricks (all versions)
+    winetricks # winetricks (all versions)
     # wineWowPackages.waylandFull # native wayland support (unstable)
     # protontricks # Running Winetricks commands for Proton-enabled games
 
@@ -441,9 +441,9 @@
     ## Productivity ##
     ##################
 
-    pkgs.anytype
+    anytype
     obsidian # Заметки
-    pkgs.planify # Task manager
+    planify # Task manager
 
     #########
     ## IDE ##
@@ -500,7 +500,7 @@
     alsa-utils # Мне для команды amixer надо
     pamixer # PulseAudio cli (громкость редачу)
     easyeffects # PipeWire settings. Мне для эквалайзера нужен
-    pkgs.flclash # VPN/proxy client
+    flclash # VPN/proxy client
 
     # Для работы некоторых тем sddm
     kdePackages.qt5compat
