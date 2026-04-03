@@ -7,7 +7,9 @@
     noto-fonts-cjk-sans # Отображение иероглифов. Версия без засечек
     noto-fonts-color-emoji
     noto-fonts-monochrome-emoji
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "Noto" "CascadiaCode" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.noto
+    nerd-fonts.caskaydia-mono
     carlito # Совместим с Calibri, разработан как его свободная альтернатива. Без засечек
     terminus_font
     inconsolata
