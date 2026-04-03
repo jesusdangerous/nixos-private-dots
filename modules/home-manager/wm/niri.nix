@@ -21,8 +21,8 @@ in {
       }
 
       touchpad {
-        tap
-        natural-scroll
+        tap true
+        natural-scroll true
         accel-profile "flat"
       }
     }
@@ -42,14 +42,16 @@ in {
       }
 
       border {
-        on true
+        enabled true
         width 1
         active-color "#${config.lib.stylix.colors.base08}"
         inactive-color "#${config.lib.stylix.colors.base01}"
       }
     }
 
-    spawn-at-startup "nm-applet"
+    spawn-at-startup {
+      spawn "nm-applet";
+    }
 
     binds {
       Mod+Shift+Slash { show-hotkey-overlay; }
@@ -131,8 +133,8 @@ in {
 
       Mod+B { spawn "firefox"; }
       Mod+Shift+B { spawn "vivaldi"; }
-      Mod+N { spawn-sh "dunstctl history-pop"; }
-      Mod+Shift+N { spawn-sh "dunstctl close-all"; }
+      Mod+N { spawn "dunstctl" "history-pop"; }
+      Mod+Shift+N { spawn "dunstctl" "close-all"; }
       Mod+Ctrl+N { spawn "obsidian"; }
       Mod+E { spawn "thunar"; }
       Mod+I { spawn "code"; }
@@ -141,14 +143,14 @@ in {
       Mod+Shift+X { spawn "gcolor3"; }
       Mod+Ctrl+X { spawn "xcolor" "-s"; }
 
-      XF86AudioMute { spawn-sh "pamixer -t"; }
-      XF86AudioMicMute { spawn-sh "pamixer --default-source -t"; }
-      XF86AudioLowerVolume { spawn-sh "pamixer -d 5"; }
-      XF86AudioRaiseVolume { spawn-sh "pamixer -i 5"; }
-      XF86AudioPlay { spawn-sh "playerctl play-pause"; }
-      XF86AudioPause { spawn-sh "playerctl play-pause"; }
-      XF86AudioNext { spawn-sh "playerctl next"; }
-      XF86AudioPrev { spawn-sh "playerctl previous"; }
+      XF86AudioMute { spawn "pamixer" "-t"; }
+      XF86AudioMicMute { spawn "pamixer" "--default-source" "-t"; }
+      XF86AudioLowerVolume { spawn "pamixer" "-d" "5"; }
+      XF86AudioRaiseVolume { spawn "pamixer" "-i" "5"; }
+      XF86AudioPlay { spawn "playerctl" "play-pause"; }
+      XF86AudioPause { spawn "playerctl" "play-pause"; }
+      XF86AudioNext { spawn "playerctl" "next"; }
+      XF86AudioPrev { spawn "playerctl" "previous"; }
       XF86MonBrightnessDown { spawn "brightnessctl" "set" "1%-"; }
       XF86MonBrightnessUp { spawn "brightnessctl" "set" "+1%"; }
 
