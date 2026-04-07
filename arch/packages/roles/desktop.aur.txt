@@ -1,5 +1,6 @@
 anytype-bin
 bibata-cursor-theme
+chili-sddm-theme
 drawio-desktop-bin
 flclash-bin
 gallery-dl

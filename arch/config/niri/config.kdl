@@ -39,8 +39,8 @@ layout {
 }
 
 spawn-at-startup "nm-applet"
-spawn-at-startup "swaybg -i ~/.config/wallpapers/nix-glow-gruvbox.jpg"
-spawn-at-startup "pkill -x waybar || true; waybar"
+spawn-at-startup "sh" "-lc" "swaybg -i \"$HOME/.config/wallpapers/nix-glow-gruvbox.jpg\""
+spawn-at-startup "sh" "-lc" "pkill -x waybar >/dev/null 2>&1 || true; waybar"
 
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }

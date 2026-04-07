@@ -58,4 +58,16 @@ if command -v virsh >/dev/null 2>&1; then
   fi
 fi
 
+echo "Configure SDDM theme"
+if [[ -d /usr/share/sddm/themes/chili ]]; then
+  install -d /etc/sddm.conf.d
+  cat > /etc/sddm.conf.d/10-theme.conf <<'EOF'
+[Theme]
+Current=chili
+EOF
+  echo "SDDM theme set to chili"
+else
+  echo "Skip: chili theme is not installed (install chili-sddm-theme from AUR)"
+fi
+
 echo "Service setup complete. Reboot is recommended."
