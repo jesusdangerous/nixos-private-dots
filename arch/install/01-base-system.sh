@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ARCH_HOSTNAME="${ARCH_HOSTNAME:-nixos}"
+ARCH_HOSTNAME="${ARCH_HOSTNAME:-arch}"
 ARCH_TIMEZONE="${ARCH_TIMEZONE:-UTC}"
 ARCH_LOCALE="${ARCH_LOCALE:-en_US.UTF-8}"
 

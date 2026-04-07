@@ -32,7 +32,7 @@ bash arch/install/05-post-check.sh
 
 The scripts support environment overrides:
 
-- ARCH_HOSTNAME (default: nixos)
+- ARCH_HOSTNAME (default: arch)
 - ARCH_TIMEZONE (default: UTC)
 - ARCH_LOCALE (default: en_US.UTF-8)
 - ARCH_USER (default: current sudo user)
@@ -40,21 +40,7 @@ The scripts support environment overrides:
 Example:
 
 ```bash
-ARCH_HOSTNAME=nixos ARCH_USER=sixxxsta sudo bash arch/install/01-base-system.sh
-```
-
-Current values from this repository profile:
-
-- Hostname: nixos
-- User: sixxxsta
-
-Typical run with current profile values:
-
-```bash
-ARCH_HOSTNAME=nixos sudo bash arch/install/01-base-system.sh
-bash arch/install/02-packages.sh --roles core,desktop,vm
-ARCH_USER=sixxxsta sudo bash arch/install/03-services.sh
-ARCH_USER=sixxxsta sudo bash arch/install/04-deploy-user-configs.sh
+ARCH_HOSTNAME=arch ARCH_USER=$USER sudo bash arch/install/01-base-system.sh
 ```
 
 ## Package Roles
