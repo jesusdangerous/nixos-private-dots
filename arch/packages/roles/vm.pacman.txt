@@ -1,0 +1,9 @@
+docker
+docker-compose
+qemu-full
+libvirt
+virt-manager
+spice-vdagent
+virtualbox
+virtualbox-host-modules-arch
+waydroid

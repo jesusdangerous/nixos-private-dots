@@ -1,0 +1,13 @@
+steam
+gamemode
+mangohud
+wine-staging
+winetricks
+dxvk
+vkd3d
+vulkan-tools
+vulkan-headers
+vulkan-icd-loader
+vulkan-validation-layers
+glslang
+spirv-tools

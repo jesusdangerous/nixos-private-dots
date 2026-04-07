@@ -5,6 +5,7 @@ NixOS + Home Manager конфиг с Wayland (niri), декларативным 
 ## Структура
 
 - `assets` - статические ассеты (qt5ct/qt6ct/Kvantum)
+- `arch` - профиль для Arch Linux (пакеты, скрипты, конфиги)
 - `modules/nixos` - системные модули NixOS
 - `modules/home-manager` - пользовательские модули Home Manager
 - `nixos` - точка входа системы

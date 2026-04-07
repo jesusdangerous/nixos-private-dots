@@ -1,0 +1,16 @@
+anytype-bin
+drawio-desktop-bin
+flclash-bin
+gruvbox-plus-icon-pack-git
+htmx-lsp-bin
+insomnia
+librewolf-bin
+niri
+obsidian
+planify
+postman-bin
+protonup-qt-bin
+rofi-calc
+rofi-pass
+rofi-power-menu
+vial-appimage
