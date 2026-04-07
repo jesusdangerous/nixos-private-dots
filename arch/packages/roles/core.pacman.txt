@@ -60,5 +60,4 @@ cantarell-fonts
 gnu-free-fonts
 papirus-icon-theme
 adwaita-icon-theme
-bibata-cursor-theme
 neovim

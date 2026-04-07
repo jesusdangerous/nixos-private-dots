@@ -1,6 +1,8 @@
 anytype-bin
+bibata-cursor-theme
 drawio-desktop-bin
 flclash-bin
+gallery-dl
 gruvbox-plus-icon-pack-git
 insomnia
 librewolf-bin
